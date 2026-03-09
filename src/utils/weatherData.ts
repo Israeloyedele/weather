@@ -40,6 +40,16 @@ export interface CurrentWeather {
     temperature_2m: number;
     weather_code: number;
 }
+export interface CurrentDisplay {
+    time: string;
+    interval: string;
+    relative_humidity_2m: string;
+    precipitation: string;
+    wind_speed_10m: string;
+    apparent_temperature: string;
+    temperature_2m: string;
+    weather_code: number;
+}
 export interface HourlyUnits {
     time: string;
     temperature_2m: string;
@@ -59,6 +69,12 @@ export interface HourlyWeatherEntry {
     temperature: number;
     weatherCode: number;
 }
+export type HourlyForecast = {
+    date: string
+    hours: HourlyEntry[]
+}[]
+
+
 export interface DailyUnits {
     time: string;
     temperature_2m_max: string;
@@ -71,10 +87,23 @@ export interface DailyWeather {
     temperature_2m_min: number[];
     weather_code: number[];
 }
-export interface DailyWeatherEntry {
+export interface DailyEntry {
     time: string;
     temperatureMax: number;
     temperatureMin: number;
     weatherCode: number;
 }
 export type Unit = "metric" | "imperial";
+
+
+
+
+export interface WeatherData {
+    latitude: number;
+    longitude: number;
+    timezone: string;
+
+    current: CurrentDisplay;
+    hourly: HourlyForecast;
+    daily: DailyEntry[];
+}
