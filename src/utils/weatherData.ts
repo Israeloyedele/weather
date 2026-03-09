@@ -50,6 +50,15 @@ export interface HourlyWeather {
     temperature_2m: number[];
     weather_code: number[];
 }
+export interface HourlyEntry {
+    time: string;
+    weatherCode: number;
+}
+export interface HourlyWeatherEntry {
+    time: string;
+    temperature: number;
+    weatherCode: number;
+}
 export interface DailyUnits {
     time: string;
     temperature_2m_max: string;
@@ -62,3 +71,10 @@ export interface DailyWeather {
     temperature_2m_min: number[];
     weather_code: number[];
 }
+export interface DailyWeatherEntry {
+    time: string;
+    temperatureMax: number;
+    temperatureMin: number;
+    weatherCode: number;
+}
+export type Unit = "metric" | "imperial";
