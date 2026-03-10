@@ -19,9 +19,10 @@ export function Form(){
         reset();
         const response = await getCityLocation(data.city)
          if(response[0]){
-            const {lat, lon} = response[0];
+            const { lat, lon } = response[0];
             console.log(response);
-            console.log(lat, lon)
+            console.log(lat, lon);
+        //     setNoResult(false)
         } else  {
             console.log("No City Location Found");
         }

@@ -63,6 +63,7 @@ export interface HourlyWeather {
 export interface HourlyEntry {
     time: string;
     weatherCode: number;
+    temperature: number;
 }
 export interface HourlyWeatherEntry {
     time: string;

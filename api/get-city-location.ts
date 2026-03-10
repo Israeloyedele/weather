@@ -19,6 +19,6 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ error: "Failed to fetch weather" });
+        res.status(500).json({ error: "No Location Match." });
     }
 }

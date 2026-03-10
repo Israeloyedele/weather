@@ -62,7 +62,8 @@ export function groupHourlyByDay(data: HourlyWeather): HourlyForecast {
 
         days[date].push({
             time,
-            weatherCode: data.weather_code[i]
+            weatherCode: data.weather_code[i],
+            temperature: data.temperature_2m[i]
         });
     });
 
