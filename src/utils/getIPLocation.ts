@@ -6,4 +6,5 @@ export async function getIPLocation() {
     const { latitude, longitude } = response.data;
 
     return { latitude, longitude };
+
 }

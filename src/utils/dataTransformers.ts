@@ -23,7 +23,13 @@ export function buildWeatherData(api: WeatherApiResponse): WeatherData {
 
         hourly: groupHourlyByDay(api.hourly),
 
-        daily: transformDaily(api.daily)
+        daily: transformDaily(api.daily),
+
+        units: {
+            temperature_2m: api.current_units.temperature_2m,
+            wind_speed_10m: api.current_units.wind_speed_10m,
+            precipitation: api.current_units.precipitation
+        }
     };
 }
 

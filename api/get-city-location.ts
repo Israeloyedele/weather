@@ -5,7 +5,7 @@ const API_KEY = process.env.OPEN_WEATHER_MAP_API_KEY;
 
 export default async function handler(req, res) {
     try {
-        const city = req.query.city as string || "London"; //CHANGE
+        const city = req.query.city as string;
 
         if (!city) {
             return res.status(400).json({ error: "City is required" });

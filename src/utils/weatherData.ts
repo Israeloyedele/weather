@@ -96,6 +96,11 @@ export interface DailyEntry {
 export type Unit = "metric" | "imperial";
 
 
+export interface WeatherUnits {
+    temperature_2m: string;
+    wind_speed_10m: string;
+    precipitation: string;
+}
 
 
 export interface WeatherData {
@@ -106,4 +111,5 @@ export interface WeatherData {
     current: CurrentDisplay;
     hourly: HourlyForecast;
     daily: DailyEntry[];
+    units: WeatherUnits;
 }
