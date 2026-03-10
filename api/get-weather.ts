@@ -15,6 +15,6 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ message: "Failed to fetch eather" });
+        res.status(500).json({ message: "Failed to fetch Weather, API Error" });
     }
 }

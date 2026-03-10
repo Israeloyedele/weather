@@ -4,7 +4,7 @@ import { Header } from './components/Header'
 import { useEffect, useState} from "react";
 import { getIPLocation } from "./utils/getIPLocation.ts";
 import { getWeather } from "./utils/getWeather.ts";
-import type { Unit, WeatherData } from "./utils/weatherData.ts";
+import type {LatLon, Unit, WeatherData} from "./utils/weatherData.ts";
 import { WeatherContext } from "./context/weatherContext.ts";
 
 
@@ -13,8 +13,9 @@ function App() {
     const [city, setCity] = useState<string>("");
     const [loading, setLoading] = useState(true);
     const [unit, setUnit] = useState<Unit>("metric");
-    const [latLng, setLatLon] = useState({lat: "", lon: ""});
+    const [latLng, setLatLon] = useState<LatLon>({lat: "", lon: ""});
     const [noResult, setNoResult] = useState<boolean>(false);
+    const [APIError, setAPIError] = useState<boolean>(false);
 
 
 
@@ -25,19 +26,24 @@ function App() {
             if(location) { const { latitude , longitude } = location
                 setLatLon({lat: latitude, lon: longitude})
             }
-            else {console.log(location)}
+            else { console.log(location) }
         }
         loadLocation();
     }, [])
 
     useEffect(() => {
-        async function getWeatherData(){
-            const data = await getWeather(latLng.lat, latLng.lon, unit);
-            if(data) {
-                setWeatherData(data);
-                setLoading(false);
+        async function getWeatherData() {
+            try {
+                const data = await getWeather(latLng.lat, latLng.lon, unit);
+                    if (data) {
+                        setWeatherData(data);
+                        setLoading(false);
+                    } else { /* empty */
+                }
             }
-            else{ console.log(data) }
+            catch (error) {
+                console.log("API error", error)
+            }
         }
         getWeatherData().finally(() => setLoading(false));
     }, [unit, latLng]);
@@ -46,7 +52,22 @@ function App() {
 
   return (
     <Router>
-        <WeatherContext.Provider value={undefined}>
+        <WeatherContext.Provider value={{
+            weatherData,
+            setWeatherData,
+            city,
+            setCity,
+            loading,
+            setLoading,
+            unit,
+            setUnit,
+            latLng,
+            setLatLon,
+            noResult,
+            setNoResult,
+            APIError,
+            setAPIError
+        }}>
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />

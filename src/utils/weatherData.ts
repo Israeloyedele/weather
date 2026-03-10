@@ -1,3 +1,6 @@
+import type {Dispatch, SetStateAction} from "react";
+
+
 export interface WeatherApiResponse {
     latitude: number;
     longitude: number;
@@ -113,4 +116,34 @@ export interface WeatherData {
     hourly: HourlyForecast;
     daily: DailyEntry[];
     units: WeatherUnits;
+}
+
+
+
+export interface LatLon {
+    lat: string;
+    lon: string;
+}
+
+export interface WeatherContextType {
+    weatherData: WeatherData | null;
+    setWeatherData: Dispatch<SetStateAction<WeatherData | null>>;
+
+    city: string;
+    setCity: Dispatch<SetStateAction<string>>;
+
+    loading: boolean;
+    setLoading: Dispatch<SetStateAction<boolean>>;
+
+    unit: Unit;
+    setUnit: Dispatch<SetStateAction<Unit>>;
+
+    latLng: LatLon;
+    setLatLon: Dispatch<SetStateAction<LatLon>>;
+
+    noResult: boolean;
+    setNoResult: Dispatch<SetStateAction<boolean>>;
+
+    APIError: boolean;
+    setAPIError: Dispatch<SetStateAction<boolean>>;
 }

@@ -25,6 +25,8 @@ export function Form(){
         //     setNoResult(false)
         } else  {
             console.log("No City Location Found");
+             //     setNoResult(true)
+
         }
     }
 

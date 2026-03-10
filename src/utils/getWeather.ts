@@ -10,7 +10,6 @@ export async function getWeather(lat: string, lon: string, unit: Unit): Promise<
         if (response.data) return buildWeatherData(response.data)
     }
     catch (error) {
-        console.log("Failed to fetch Weather");
         console.log(error);
     }
 }
