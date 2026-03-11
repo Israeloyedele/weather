@@ -1,4 +1,4 @@
-export function NoResults(){
+export function DailyPane(){
     return (
         <div></div>
     )

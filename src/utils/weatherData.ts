@@ -129,9 +129,6 @@ export interface WeatherContextType {
     weatherData: WeatherData | null;
     setWeatherData: Dispatch<SetStateAction<WeatherData | null>>;
 
-    city: string;
-    setCity: Dispatch<SetStateAction<string>>;
-
     loading: boolean;
     setLoading: Dispatch<SetStateAction<boolean>>;
 

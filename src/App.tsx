@@ -10,7 +10,7 @@ import { WeatherContext } from "./context/weatherContext.ts";
 
 function App() {
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-    const [city, setCity] = useState<string>("");
+    // const [city, setCity] = useState<string>("");
     const [loading, setLoading] = useState(true);
     const [unit, setUnit] = useState<Unit>("metric");
     const [latLng, setLatLon] = useState<LatLon>({lat: "", lon: ""});
@@ -55,8 +55,6 @@ function App() {
         <WeatherContext.Provider value={{
             weatherData,
             setWeatherData,
-            city,
-            setCity,
             loading,
             setLoading,
             unit,

@@ -1,11 +1,20 @@
 import { useForm } from "react-hook-form"
 import { getCityLocation } from "../utils/getCityLocation.ts";
+import { WeatherContext } from "../context/weatherContext.ts";
+import { useContext } from "react";
+import { useWeather } from "../hooks/useWeather.ts";
 
 type Inputs = {
     city: string
 }
 
 export function Form(){
+
+    const context = useContext(WeatherContext);
+    if (!context){
+        throw new Error("Error")
+    }
+    const { setLatLon, setNoResult } = useWeather();
 
     const {
         register,
@@ -20,13 +29,13 @@ export function Form(){
         const response = await getCityLocation(data.city)
          if(response[0]){
             const { lat, lon } = response[0];
-            console.log(response);
-            console.log(lat, lon);
-        //     setNoResult(false)
+
+            setLatLon({ lat:lat, lon:lon });
+            setNoResult(false)
+
         } else  {
             console.log("No City Location Found");
-             //     setNoResult(true)
-
+            setNoResult(true)
         }
     }
 

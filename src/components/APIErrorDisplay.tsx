@@ -1,0 +1,5 @@
+export function APIErrorDisplay(){
+    return (
+        <></>
+    )
+}
