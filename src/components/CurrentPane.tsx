@@ -1,3 +1,15 @@
+import { useWeather } from "../hooks/useWeather.ts";
+import {Today} from "./Today.tsx";
+
 export function CurrentPane() {
-    return <></>
+
+    const { weatherData } = useWeather();
+    return (
+        <div>
+            <Today title={"Feels Like"} data={weatherData?.current.apparent_temperature} />
+            <Today title={"Humidity"} data={weatherData?.current.relative_humidity_2m} />
+            <Today title={"Wind"} data={weatherData?.current.wind_speed_10m} />
+            <Today title={"Precipitation"} data={weatherData?.current.precipitation} />
+        </div>
+    )
 }

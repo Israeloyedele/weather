@@ -10,10 +10,10 @@ import { WeatherContext } from "./context/weatherContext.ts";
 
 function App() {
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-    // const [city, setCity] = useState<string>("");
+    const [city, setCity] = useState<string>("");
     const [loading, setLoading] = useState(true);
     const [unit, setUnit] = useState<Unit>("metric");
-    const [latLng, setLatLon] = useState<LatLon>({lat: "", lon: ""});
+    const [latLon, setLatLon] = useState<LatLon>({lat: "", lon: ""});
     const [noResult, setNoResult] = useState<boolean>(false);
     const [APIError, setAPIError] = useState<boolean>(false);
 
@@ -23,8 +23,9 @@ function App() {
     useEffect(() => {
         async function loadLocation() {
             const location = await getIPLocation();
-            if(location) { const { latitude , longitude } = location
+            if(location) { const { latitude , longitude, city, country_name } = location
                 setLatLon({lat: latitude, lon: longitude})
+                setCity(`${city}, ${country_name}`)
             }
             else { console.log(location) }
         }
@@ -32,9 +33,10 @@ function App() {
     }, [])
 
     useEffect(() => {
+        if(!latLon.lat || !latLon.lon) return;
         async function getWeatherData() {
             try {
-                const data = await getWeather(latLng.lat, latLng.lon, unit);
+                const data = await getWeather(latLon.lat, latLon.lon, unit);
                     if (data) {
                         setWeatherData(data);
                         setLoading(false);
@@ -42,24 +44,28 @@ function App() {
                 }
             }
             catch (error) {
+                setAPIError(true)
                 console.log("API error", error)
             }
         }
-        getWeatherData().finally(() => setLoading(false));
-    }, [unit, latLng]);
+        getWeatherData();
+    }, [unit, latLon]);
 
 
 
   return (
+      <div className="bg-[#01012D] text-white ">
     <Router>
         <WeatherContext.Provider value={{
             weatherData,
             setWeatherData,
+            city,
+            setCity,
             loading,
             setLoading,
             unit,
             setUnit,
-            latLng,
+            latLng: latLon,
             setLatLon,
             noResult,
             setNoResult,
@@ -72,6 +78,7 @@ function App() {
             </Routes>
         </WeatherContext.Provider>
     </Router>
+      </div>
   )
 }
 

@@ -8,9 +8,9 @@
     height: 12px;
     border-radius: 50%;
     display: block;
-    margin:15px auto;
+    margin: 15px auto;
     position: relative;
-    color: #FFF;
+    color: white;
     box-sizing: border-box;
     animation: animloader 1s linear infinite alternate;
 }

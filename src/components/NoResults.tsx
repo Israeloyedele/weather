@@ -1,5 +1,7 @@
 export function NoResults(){
     return (
-        <div></div>
+        <div>
+            <p>No search result found!</p>
+        </div>
     )
 }

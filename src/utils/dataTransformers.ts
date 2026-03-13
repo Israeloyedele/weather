@@ -6,7 +6,7 @@ import type {
     DailyEntry,
     HourlyEntry,
     HourlyWeather,
-    HourlyWeatherEntry,
+    // HourlyWeatherEntry,
     WeatherApiResponse,
     WeatherData,
     HourlyForecast
@@ -34,13 +34,13 @@ export function buildWeatherData(api: WeatherApiResponse): WeatherData {
 }
 
 
-export function transformHourly(data: HourlyWeather): HourlyWeatherEntry[] {
-    return data.time.map((time, i) => ({
-        time,
-        temperature: data.temperature_2m[i],
-        weatherCode: data.weather_code[i],
-    }));
-}
+// export function transformHourly(data: HourlyWeather): HourlyWeatherEntry[] {
+//     return data.time.map((time, i) => ({
+//         time,
+//         temperature: data.temperature_2m[i],
+//         weatherCode: data.weather_code[i],
+//     }));
+// }
 export function transformDaily(data: DailyWeather): DailyEntry[] {
     return data.time.map((time, i) => ({
         time,
@@ -80,10 +80,10 @@ function mergeCurrent(
     return {
         time: current.time,
         interval: `${current.interval} ${units.interval}`,
-        relative_humidity_2m: `${current.relative_humidity_2m} ${units.relative_humidity_2m}`,
+        relative_humidity_2m: `${current.relative_humidity_2m}${units.relative_humidity_2m}`,
         precipitation: `${current.precipitation} ${units.precipitation}`,
         wind_speed_10m: `${current.wind_speed_10m} ${units.wind_speed_10m}`,
-        apparent_temperature: `${current.apparent_temperature} ${units.apparent_temperature}`,
+        apparent_temperature: `${current.apparent_temperature}${units.apparent_temperature}`,
         temperature_2m: `${current.temperature_2m} ${units.temperature_2m}`,
         weather_code: current.weather_code
     };
