@@ -5,8 +5,8 @@ import axios from "axios";
 
 export default async function handler(req, res) {
     try {
-        // const clientIP = req.headers['x-forwarded-for']?.toString().split(',')[0] || req.socket.remoteAddress;
-        const clientIP = "102.89.85.114"
+        const clientIP = req.headers['x-forwarded-for']?.toString().split(',')[0] || req.socket.remoteAddress;
+        // const clientIP = ""
 
         const response = await axios.get(`https://ipapi.co/${clientIP}/json`);
 
