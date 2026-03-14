@@ -1,11 +1,11 @@
 import { useState } from "react";
-import {useWeather} from "../hooks/useWeather.ts";
+import { useWeather } from "../hooks/useWeather.ts";
 import { UnitTab } from "./UnitTab.tsx";
 
 export function Unit(){
 
     const [open, setOpen] = useState(false)
-    const { unit } = useWeather()
+    const { unit, setUnit, setLoading } = useWeather()
 
 
     return (
@@ -16,7 +16,13 @@ export function Unit(){
                 <img src="/images/icon-dropdown.svg" alt=""/>
             </div>
             <div className={`${open ? "" : "hidden"} absolute top-full right-0 group-hover:block`}>
-                <p>Switch to {unit === "metric" ? "Imperial" : "Metric"}</p>
+                <p className="cursor-pointer"
+                   onClick={() => {
+                       setUnit(unit === "metric" ? "imperial" : "metric")
+                       setLoading(true)
+                   }}>
+
+                Switch to {unit === "metric" ? "Imperial" : "Metric"}</p>
 
                 <UnitTab tabName="Temperature" metric="Celcius (&deg;C)" imperial="Fahrenheit (&deg;F)"/>
                 <UnitTab tabName="Wind Speed" metric="km/h" imperial="mph"/>

@@ -13,7 +13,6 @@ export function DailyPane(){
         {time: '2026-01-01', temperatureMax: 33.3, temperatureMin: 27.7, weatherCode: 3},
         {time: '2026-01-01', temperatureMax: 33.3, temperatureMin: 27.7, weatherCode: 3}
     ];
-    console.log(weatherData?.daily);
     return (
         <div>
             {weatherData && !loading ?
