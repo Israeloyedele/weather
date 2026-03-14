@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { format } from "date-fns";
+import {format, parseISO} from "date-fns";
 
 
 interface DayDropdownTabProps {
@@ -16,7 +16,7 @@ export function DayDropdownTab({day, i, setSelectedDay, setOpen}: DayDropdownTab
             setOpen(false)
         }}
              className="cursor-pointer">
-            {format(new Date(day), "cccc")}
+            {format(parseISO(day), "eeee")}
         </div>
     )
 }

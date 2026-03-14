@@ -1,5 +1,7 @@
 import { useWeather } from "../hooks/useWeather.ts";
 import { Loader } from "./Loader.tsx";
+import { getWeatherIcon } from "../utils/getweatherIcon.ts";
+import { format, parseISO } from "date-fns";
 
 export function Current() {
 
@@ -8,13 +10,26 @@ export function Current() {
     return (
         <div>
             {
-                loading ? <Loader />
+                loading || !weatherData ? <Loader />
                     : <div>
-                        <p>{city}</p>
-                        <p>{weatherData?.current.time}</p>
+                        <div>
+                            <p>{city}</p>
+                            <p>{
+                                `${format(parseISO(weatherData.current.time), "cccc")},
+                                ${format(parseISO(weatherData.current.time), "LLL")} 
+                                ${format(parseISO(weatherData.current.time), "d")}, 
+                                ${format(parseISO(weatherData.current.time), "y")}`
+                            }</p>
+                        </div>
+                        <div>
+                            <img src={getWeatherIcon(weatherData.current.weather_code)} alt="" width="50px"/>
+                            <p>{weatherData.current.temperature_2m}</p>
+                        </div>
                     </div>
             }
 
         </div>
     )
 }
+
+//

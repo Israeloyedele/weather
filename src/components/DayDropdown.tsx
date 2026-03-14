@@ -1,7 +1,7 @@
 import { type Dispatch, type SetStateAction, useState } from "react";
 import { useWeather } from "../hooks/useWeather.ts";
 import { DayDropdownTab } from "./DayDropdownTab.tsx";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 interface DayDropdownProps {
     selectedDay: number,
@@ -16,7 +16,7 @@ export function DayDropdown({ selectedDay, setSelectedDay }: DayDropdownProps) {
     return (
         <div className="relative">
             <button onClick={() => setOpen(!open)}>
-                {loading || !weatherData ? <span>-</span> : <p>{format(new Date(weatherData.hourly[selectedDay].date), "cccc")}</p>}
+                {loading || !weatherData ? <span>-</span> : <p>{format(parseISO(weatherData.hourly[selectedDay].date), "eeee")}</p>}
                 <img src="/images/icon-dropdown.svg" alt=""/>
             </button>
 
