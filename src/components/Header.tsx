@@ -3,7 +3,7 @@ import { Unit} from './Unit';
 
 export function Header() {
     return (
-        <div>
+        <div className="flex items-center justify-between">
             <Logo />
             <Unit />
         </div>

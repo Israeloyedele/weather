@@ -1,5 +1,5 @@
-import {DayDropdown} from "./DayDropdown.tsx";
-import type {Dispatch, SetStateAction} from "react";
+import { DayDropdown } from "./DayDropdown.tsx";
+import { type Dispatch, type SetStateAction } from "react";
 
 interface HourlyHeaderProps {
     selectedDay: number

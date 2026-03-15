@@ -23,9 +23,13 @@ function App() {
     useEffect(() => {
         async function loadLocation() {
             const location = await getIPLocation();
-            if(location) { const { latitude , longitude, city, country_name } = location
+
+            if(location.latitude) { const { latitude , longitude, city, country_name } = location
                 setLatLon({lat: latitude, lon: longitude})
                 setCity(`${city}, ${country_name}`)
+            }
+            if(location.error){
+                console.log("Error loading location");
             }
             else { console.log(location) }
         }
@@ -54,7 +58,7 @@ function App() {
 
 
   return (
-      <div className="bg-[#01012D] text-white ">
+      <div className="bg-[#01012D] text-white p-5 text-lg">
     <Router>
         <WeatherContext.Provider value={{
             weatherData,

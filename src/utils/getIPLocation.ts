@@ -2,10 +2,9 @@ import axios from "axios";
 
 
 export async function getIPLocation() {
-    const response = await axios.get("/api/get-ip-location");
     try {
-        const { latitude, longitude, city, country_name } = response.data;
-        return { latitude, longitude, city, country_name };
+        const response = await axios.get("/api/get-ip-location");
+        return response.data;
     }
     catch (error) {
         console.log(error);

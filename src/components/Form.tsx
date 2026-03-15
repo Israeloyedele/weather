@@ -87,19 +87,22 @@ export function Form(){
         }
     }
 
+    // {errors.city && <p>Please input a city</p>} toast
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
 
-            <div className="relative flex">
+            <div className="relative flex gap-2 py-4 px-5 rounded-xl bg-[#302f4b]">
                 <img src="/images/icon-search.svg" alt=""/>
-                <input {...register("city", { required: true, setValueAs: (value) => value.trim() })} />
-                {errors.city && <p>Please input a city</p>}
+                <input className="focus:outline-none"
+                       placeholder="Search for a place..."
+                       {...register("city", { required: true, setValueAs: (value) => value.trim() })} />
+
 
 
                 {open && suggestions.length > 0 && (
 
                     <div className="absolute left-0 right-0 top-full mt-2 bg-slate-800 rounded-lg shadow-lg overflow-hidden z-50 max-h-60 overflow-y-auto">
-                        { searchInProgress? <></> : suggestions.map((city) => (
+                        { searchInProgress? <div>search in progress...</div> : suggestions.map((city) => (
 
                             <div
                                 key={`${city.name}-${city.latitude}`}
@@ -120,7 +123,8 @@ export function Form(){
                 </div>
             )}
             </div>
-            <input type="submit" value="Search" className="w-full" />
+            <input type="submit" value="Search"
+                   className="w-full py-4 px-5 rounded-xl bg-[#4355db] font-semibold" />
         </form>
     )
 
