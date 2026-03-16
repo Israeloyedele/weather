@@ -40,8 +40,8 @@ export function Form(){
             less();
             return
         }
-        const setSearch = () => setSearchInProgress(true);
-        setSearch();
+        const setSearch = (value: boolean) => setSearchInProgress(value);
+        setSearch(true);
 
 
         const timer = setTimeout(async () => {
@@ -55,6 +55,10 @@ export function Form(){
             if (data.results) {
                 setSuggestions(data.results)
                 setOpen(true)
+                setSearchInProgress(false);
+            }
+            else {
+                setSuggestions([])
                 setSearchInProgress(false);
             }
 
@@ -93,7 +97,7 @@ export function Form(){
 
             <div className="relative flex gap-2 py-4 px-5 rounded-xl bg-[#302f4b]">
                 <img src="/images/icon-search.svg" alt=""/>
-                <input className="focus:outline-none"
+                <input className="focus:outline-none grow"
                        placeholder="Search for a place..."
                        {...register("city", { required: true, setValueAs: (value) => value.trim() })} />
 
@@ -101,12 +105,17 @@ export function Form(){
 
                 {open && suggestions.length > 0 && (
 
-                    <div className="absolute left-0 right-0 top-full mt-2 bg-slate-800 rounded-lg shadow-lg overflow-hidden z-50 max-h-60 overflow-y-auto">
-                        { searchInProgress? <div>search in progress...</div> : suggestions.map((city) => (
+                    <div className="absolute left-0 right-0 top-full p-2 mt-2 bg-[#302f4b] rounded-lg shadow-lg overflow-hidden z-50 max-h-60 overflow-y-auto">
+                        { searchInProgress ?
+                            <div className="flex gap-2 px-1">
+                                <img className="animate-spin" src="/images/icon-loading.svg" alt=""/> <p>Search in progress...</p>
+                            </div>
+                            :
+                            suggestions.map((city) => (
 
                             <div
                                 key={`${city.name}-${city.latitude}`}
-                                className="cursor-pointer"
+                                className="cursor-pointer py-2 px-3 hover:bg-[#3c3b5d] font-semibold rounded-md "
                                 onClick={() => {
                                     setNoResult(false)
                                     setLoading(true)
@@ -124,7 +133,7 @@ export function Form(){
             )}
             </div>
             <input type="submit" value="Search"
-                   className="w-full py-4 px-5 rounded-xl bg-[#4355db] font-semibold" />
+                   className="w-full py-4 px-5 rounded-xl bg-[#4355db] hover:bg-[#2d1dbb] cursor-pointer font-semibold" />
         </form>
     )
 

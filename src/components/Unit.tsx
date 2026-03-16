@@ -12,14 +12,14 @@ export function Unit(){
 
 
     return (
-        <div ref={ref} className="relative group grow flex justify-end">
-            <div onClick={()=> setOpen(!open)} className="flex gap-2 cursor-pointer bg-[#302f4b] py-2 px-3 rounded-lg">
+        <div ref={ref} className="relative group grow max-w-50 flex justify-end">
+            <div onClick={()=> setOpen(!open)} className="flex gap-2 cursor-pointer bg-[#3c3b5d] py-2 px-3 rounded-lg mb-2">
                 <img className="" width="16" height="16" src="/images/icon-units.svg" alt=""/>
-                <p className="font-semibold">Units</p>
+                <p className="font-semibold text-sm">Units</p>
                 <img className="" width="13" height="8" src="/images/icon-dropdown.svg" alt=""/>
             </div>
-            <div className={`${open ? "" : "hidden"} w-full absolute top-full right-0 group-hover:block p-3`}>
-                <p className="cursor-pointer flex"
+            <div className={`${open ? "" : "hidden"} font-semibold z-10 w-full absolute top-full flex flex-col gap-2 right-0 group-hover:flex bg-[#302f4b] p-2 rounded-xl`}>
+                <p className="cursor-pointer hover:bg-[#3c3b5d] px-2 py-1 rounded-lg"
                    onClick={() => {
                        setUnit(unit === "metric" ? "imperial" : "metric")
                        setLoading(true)

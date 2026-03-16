@@ -16,16 +16,17 @@ export function DailyPane(){
     return (
         <div>
             {weatherData && !loading ?
-                weatherData.daily.map((day, i) =>
-                    <Day day={day.time}
+                <div className="grid grid-cols-3 gap-3">
+                    {weatherData.daily.map((day, i) => <Day day={day.time}
                          key={i}
                          tempMax={day.temperatureMax}
                          tempMin={day.temperatureMin}
                          code={day.weatherCode}
                          dummy={false}
-                    />) :
-
-                    <div>
+                    />)}
+                </div>
+                :
+                    <div className="grid grid-cols-3 gap-3">
                         {
                             dummyData.map((day, i) =>
                             <Day day={day.time}
