@@ -24,7 +24,7 @@ export function Form(){
         handleSubmit,
         control,
         reset,
-        formState: { errors },
+        // formState: { errors },
     } = useForm<Inputs>()
 
     const cityInput = useWatch({
