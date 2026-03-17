@@ -7,7 +7,7 @@ export function Home() {
 
 
     return (
-        <div>
+        <div className="flex items-center justify-center">
             {APIError ?
                 <APIErrorDisplay /> :
 

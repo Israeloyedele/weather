@@ -6,7 +6,7 @@ import { Results } from "./Results.tsx";
 export function ResultsDisplay(){
     const { noResult }  = useWeather()
     return (
-        <div>
+        <div className="w-full">
             <SearchPane />
             { noResult ?
                 <NoResults />

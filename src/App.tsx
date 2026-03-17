@@ -44,7 +44,7 @@ function App() {
                     if (data) {
                         setWeatherData(data);
                         setLoading(false);
-                    } else { /* empty */
+                    } else { setAPIError(true)
                 }
             }
             catch (error) {

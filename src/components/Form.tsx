@@ -2,6 +2,7 @@ import {useForm, useWatch} from "react-hook-form"
 import { getCityLocation } from "../utils/getCityLocation.ts";
 import { useWeather } from "../hooks/useWeather.ts";
 import {useEffect, useState} from "react";
+import {Bounce, toast, ToastContainer} from "react-toastify";
 
 type Inputs = {
     city: string
@@ -24,7 +25,7 @@ export function Form(){
         handleSubmit,
         control,
         reset,
-        // formState: { errors },
+        formState: { errors },
     } = useForm<Inputs>()
 
     const cityInput = useWatch({
@@ -91,6 +92,21 @@ export function Form(){
         }
     }
 
+    useEffect(() => {
+        toast.info('Input a city to search', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+        });
+
+    }, [errors.city]);
+
     // {errors.city && <p>Please input a city</p>} toast
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
@@ -131,6 +147,19 @@ export function Form(){
                     ))}
                 </div>
             )}
+                <ToastContainer
+                    position="top-right"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                    transition={Bounce}
+                />
             </div>
             <input type="submit" value="Search"
                    className="w-full py-4 px-5 rounded-xl bg-[#4355db] hover:bg-[#2d1dbb] cursor-pointer font-semibold" />

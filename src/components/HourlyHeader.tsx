@@ -9,8 +9,8 @@ interface HourlyHeaderProps {
 export function HourlyHeader({selectedDay, setSelectedDay}: HourlyHeaderProps) {
 
     return (
-        <div>
-            <p>Hourly Forecast</p>
+        <div className="flex justify-between items-center">
+            <p className="text-lg font-semibold">Hourly Forecast</p>
             <DayDropdown selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
         </div>
     )

@@ -24,7 +24,7 @@ export function HourlyDisplay({ selectedDay }: HourlyDisplayProps) {
 
 
     return (
-        <div>
+        <div className="flex flex-col gap-3 py-3">
             { loading || !weatherData ?
                 dummyData.map((hour, i) => <Hour key={i} data={hour} dummy={true}/>)
                 :
