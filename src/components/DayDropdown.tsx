@@ -23,7 +23,7 @@ export function DayDropdown({ selectedDay, setSelectedDay }: DayDropdownProps) {
                 <img src="/images/icon-dropdown.svg" alt=""/>
             </button>
 
-            <div className={`${open ? "" : "hidden"} absolute top-full right-0 bg-[#262a41] p-2 rounded-lg mt-2 gap-2 flex flex-col`}>
+            <div className={`${open ? "" : "hidden"} absolute shadow-lg top-full right-0 bg-[#262a41] p-2 rounded-lg mt-2 gap-2 flex flex-col`}>
                 {loading || !weatherData ? <></> :
                     weatherData.hourly.map((tab, i) =>
                         <DayDropdownTab key={tab.date}

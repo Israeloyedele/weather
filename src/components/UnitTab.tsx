@@ -24,5 +24,3 @@ export function UnitTab({tabName, metric, imperial, lastChild}: UnitTabProps) {
         </div>
     )
 }
-
-// bg-[#3c3b5d]
