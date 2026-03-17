@@ -16,7 +16,7 @@ export function DailyPane(){
     return (
         <div>
             {weatherData && !loading ?
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 lg:grid-cols-7 md:grid-cols-7 gap-3">
                     {weatherData.daily.map((day, i) => <Day day={day.time}
                          key={i}
                          tempMax={day.temperatureMax}
@@ -26,7 +26,7 @@ export function DailyPane(){
                     />)}
                 </div>
                 :
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-3 lg:grid-cols-7 lg:grid-cols-4 gap-3">
                         {
                             dummyData.map((day, i) =>
                             <Day day={day.time}

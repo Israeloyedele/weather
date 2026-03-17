@@ -84,7 +84,7 @@ function mergeCurrent(
         precipitation: `${current.precipitation} ${units.precipitation}`,
         wind_speed_10m: `${current.wind_speed_10m} ${units.wind_speed_10m}`,
         apparent_temperature: `${current.apparent_temperature}${units.apparent_temperature}`,
-        temperature_2m: `${current.temperature_2m} ${units.temperature_2m}`,
+        temperature_2m: `${current.temperature_2m}°`,
         weather_code: current.weather_code
     };
 }

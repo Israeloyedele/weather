@@ -111,9 +111,9 @@ export function Form(){
 
     // {errors.city && <p>Please input a city</p>} toast
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 md:flex-row md:max-w-[700px] md:w-full justify-center items-center">
 
-            <div className="relative flex gap-2 py-4 px-5 rounded-xl bg-[#302f4b]">
+            <div className="w-full relative flex gap-2 py-4 px-5 rounded-xl bg-[#302f4b] max-w-[400px] md:grow">
                 <img src="/images/icon-search.svg" alt=""/>
                 <input className="focus:outline-none grow"
                        placeholder="Search for a place..."
@@ -164,7 +164,7 @@ export function Form(){
                 />
             </div>
             <input type="submit" value="Search"
-                   className="w-full py-4 px-5 rounded-xl bg-[#4355db] hover:bg-[#2d1dbb] cursor-pointer font-semibold" />
+                   className="w-full max-w-[400px] md:w-auto py-4 px-5 md:px-10 rounded-xl bg-[#4355db] hover:bg-[#2d1dbb] cursor-pointer font-semibold" />
         </form>
     )
 

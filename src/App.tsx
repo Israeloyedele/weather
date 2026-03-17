@@ -58,7 +58,7 @@ function App() {
 
 
   return (
-      <div className="bg-[#01012D] text-white p-5" style={{ fontFamily: "DM Sans" }}>
+      <div className="bg-[#01012D] text-white p-5 lg:px-30 lg:py-10" style={{ fontFamily: "DM Sans" }}>
     <Router>
         <WeatherContext.Provider value={{
             weatherData,

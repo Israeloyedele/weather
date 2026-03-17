@@ -1,16 +1,17 @@
-import { useWeather } from "../hooks/useWeather.ts";
+import {useWeather} from "../hooks/useWeather.ts";
 
 interface UnitTabProps {
     tabName: string,
     metric: string,
-    imperial: string
+    imperial: string,
+    lastChild?: boolean
 }
 
-export function UnitTab({tabName, metric, imperial}: UnitTabProps) {
-    const { unit } = useWeather();
+export function UnitTab({tabName, metric, imperial, lastChild}: UnitTabProps) {
+    const {unit} = useWeather();
 
     return (
-        <div className="flex flex-col gap-1 pb-3">
+        <div className={`${!lastChild && "border-b border-gray-600"} flex flex-col gap-1 py-2`}>
             <p className="text-[13px] text-[#d6d7db] px-2">{tabName}</p>
             <div className={`${unit === "metric" ? "bg-[#3c3b5d]" : ""} flex justify-between rounded-lg px-2 py-1`}>
                 <p>{metric}</p>
@@ -23,4 +24,5 @@ export function UnitTab({tabName, metric, imperial}: UnitTabProps) {
         </div>
     )
 }
+
 // bg-[#3c3b5d]
