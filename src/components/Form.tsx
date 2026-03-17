@@ -93,6 +93,8 @@ export function Form(){
     }
 
     useEffect(() => {
+        if(!errors.city) return
+
         toast.info('Input a city to search', {
             position: "top-center",
             autoClose: 2000,
