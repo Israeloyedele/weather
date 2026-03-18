@@ -7,7 +7,7 @@ export function HourlyForecast(){
     const [selectedDay, setSelectedDay] = useState(0);
 
     return (
-        <div className="bg-[#302f4b] py-5 my-3 rounded-2xl px-5 grow lg:my-0">
+        <div className="bg-[#302f4b] py-5 rounded-2xl px-5 grow lg:my-0">
             <HourlyHeader selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
             <HourlyDisplay selectedDay={selectedDay} />
         </div>
