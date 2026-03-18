@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router'
 import { Home } from './pages/Home'
 import { Header } from './components/Header'
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { getIPLocation } from "./utils/getIPLocation.ts";
 import { getWeather } from "./utils/getWeather.ts";
-import type {LatLon, Unit, WeatherData} from "./utils/weatherData.ts";
+import type { LatLon, Unit, WeatherData } from "./utils/weatherData.ts";
 import { WeatherContext } from "./context/weatherContext.ts";
 
 

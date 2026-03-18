@@ -3,18 +3,6 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-
-// https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [
-//       react(),
-//       tailwindcss(),
-//
-//
-//   ],
-// })
-
-
 export default defineConfig({
   plugins: [
     react(),
@@ -22,7 +10,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Weather App',
+        name: 'Weather',
         short_name: 'Weather',
         start_url: '/',
         display: 'standalone',
